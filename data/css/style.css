@@ -1,0 +1,84 @@
+body
+	{
+		background:#F2DBAE; /*#ddeeff*/
+		margin:0;
+	}
+.page_title
+	{
+		text-align:center;
+		font-size:35px;
+	}
+.button
+	{
+		width:200px;
+		border:1px solid #993300;
+		text-align:center;
+		background:#BF532C;
+		padding:5px 0px;
+		cursor:pointer;
+		margin:10px;
+		border-radius:5px;
+		color:#ffffff;
+		font-weight:bold;
+	}
+.button:hover
+	{
+		background:#dd7744;
+	}
+#author_pos
+	{
+		margin:auto;
+		width:100%;
+	}
+#author
+	{
+		margin:50px auto;
+		width:340px;
+		border:1px solid #993300;
+		border-radius:5px;
+		padding:10px;
+		background:#BF532C;
+	}
+#author table
+	{
+		text-align:left;
+		color:#ffffff;
+		margin:auto;
+	}
+.submit
+	{
+		text-align:center;
+	}
+.error
+	{
+		border:2px solid #ff6600;
+		color:#ff6600;
+		text-align:center;
+		padding:5px;
+		font-weight:bold;
+		background:#ffffff;
+	}
+#dialogform
+	{
+		height:auto;
+		overflow:hidden;
+		background:#BF532C;
+		border:1px solid #993300;
+		margin:auto;
+		width:80%;
+		min-width:450px;
+		max-width:620px;
+		padding:10px;
+	}
+#dialogform table
+	{
+		text-align:center;
+		color:#ffffff;
+		margin:auto;
+	}
+@media print {
+	.top_menu
+		{
+			display:none;
+		}
+}

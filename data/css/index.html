@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Движение обьектов</title>
+		<script src="jquery.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<style>
+			body {margin:0px;}
+			#round 
+				{
+					width:100px;
+					height:100px;
+					border-radius:50%;
+					background:#ff0000;
+				}
+			#bord
+				{
+					width:500px;
+					height:500px;
+					border:1px solid black;
+				}
+		</style>
+		<div id="round"></div>
+		<div id="bord"></div><p></p>
+		<script>
+			var r=$("#round");
+			var xspeed=0;
+			var yspeed=0;
+			var x=50;
+			var y=50;
+			$(document).ready(function(){
+				setInterval(function(){
+					x+=xspeed;
+					y+=yspeed;
+					if (x<10) {x=410;}
+					if (x>410) {x=10;}
+					if (y<10) {y=410;}
+					if (y>410) {y=10;}
+					r.offset({top:y, left:x});
+				},100);
+				$(document).keydown(function(e){
+					$("#bord").offset({top:10, left:10});
+					if (e.which==100) {xspeed=-10;yspeed=0;}
+					if (e.which==104) {yspeed=-10;xspeed=0;}
+					if (e.which==102) {xspeed=10;yspeed=0;}
+					if (e.which==98) {yspeed=10;xspeed=0;}
+					if (e.which==103) {xspeed=-10;yspeed=-10;}
+					if (e.which==105) {xspeed=10;yspeed=-10;}
+					if (e.which==99) {xspeed=10;yspeed=10;}
+					if (e.which==97) {xspeed=-10;yspeed=10;}
+					var offset = r.offset();
+					$("p:first").text("x="+offset.left+", y="+offset.top+" "+e.which);
+				});
+			});
+			
+		</script>
+	</body>
+</html>
