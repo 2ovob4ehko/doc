@@ -2,7 +2,9 @@ body
 	{
 		background:#F2DBAE; /*#ddeeff*/
 		margin:0;
+		font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
 	}
+/****Сторінка авторизації****/
 .page_title
 	{
 		text-align:center;
@@ -58,6 +60,104 @@ body
 		font-weight:bold;
 		background:#ffffff;
 	}
+/***Кінець сторінки авторизації***/
+/**Основна сторінка*/
+#page
+	{
+		margin:auto;
+		width:90%;
+		height:95%;
+		position:relative;
+		max-width:1050px;
+	}
+#left_menu
+	{
+		width:160px;
+		height:calc(100% - 44px);
+		position:absolute;
+		top:44px;
+		left:0;
+	}
+#left_menu div
+	{
+		margin:2px 0;
+		padding:4px;
+		display:block;
+		width:calc(100% - 8px);
+		cursor:pointer;
+		color:#BF532C;
+		font-size:13px;
+	}
+#left_menu div:hover
+	{
+		background:rgba(191, 83, 44, 0.1);
+	}
+#top_menu
+	{
+		width:100%;
+		height:40px;
+		position:relative;
+		border:1px solid #ba7055;
+		background:#BF532C;
+		border-bottom-left-radius:5px;
+		border-bottom-right-radius:5px;
+	}
+#top_menu ul
+	{
+		margin:0;
+		position:absolute;
+		top:0;
+		right:0;
+	}
+#top_menu ul li
+	{
+		display: inline;
+		text-align:center;
+		padding:15px 10px;
+		cursor:pointer;
+		margin:0 2px;
+		color:#ffffff;
+		font-weight:bold;
+		font-size:11px;
+		line-height:40px;
+	}
+#top_menu ul li:hover
+	{
+		background:rgba(133, 59, 32, 0.2);
+	}
+#logo
+	{
+		background:url(favicon.png);
+		background-repeat: no-repeat;
+		background-size: 100% 90%;
+		background-position:center center;
+		width:40px;
+		height:40px;
+		position:absolute;
+		top:0;
+		left:5px;
+	}
+#data
+	{
+		width:calc(100% - 165px);
+		height:calc(100% - 44px);
+		position:absolute;
+		top:44px;
+		right:0;
+		margin:0;
+		overflow-y:scroll;
+		border-left:1px solid rgba(191, 83, 44, 0.3);
+	}
+#photo
+	{
+		width:150px;
+		height:200px;
+		border:1px solid black;
+		float:left;
+		margin:0 5px 5px 0;
+	}
+/***Кінець основної сторінки***/
+
 #dialogform
 	{
 		height:auto;
