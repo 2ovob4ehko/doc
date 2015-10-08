@@ -1,13 +1,3 @@
-﻿<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title><? echo $site_name;?> | <? echo $autorisation;?></title>
-		<link rel="stylesheet" href="<?=base_url()?>data/css/style.css" type="text/css" media="all" />
-		<link rel="icon" href="<?=base_url()?>data/css/favicon.png" type="image/x-icon"/>
-		<script src="<?=base_url()?>data/js/jquery.js" type="text/javascript"></script>
-		<script src="<?=base_url()?>data/js/action.js" type="text/javascript"></script>
-	</head>
-	<body>
 	<div class="page_title"><? echo $autorisation;?></div>
 		<form method="POST" action="<?=base_url()?>main/author_action" enctype="multipart/form-data">
 			<div id="author_pos">
@@ -30,5 +20,3 @@
 				</div>
 			</div>
 		</form>
-	</body>
-</html>

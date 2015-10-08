@@ -14,6 +14,7 @@ $lang['text_chosen_persons']="Вибрані фіз. особи";
 $lang['text_chosen_firms']="Вибрані підприємства";
 $lang['text_messages']="Повідомлення";
 $lang['text_settings']="Налаштування";
+$lang['text_select_language']="Мова";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

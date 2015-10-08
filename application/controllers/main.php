@@ -25,13 +25,6 @@ class Main extends CI_Controller {
 		if(!$this->input->cookie('login')){
 			redirect('/main/author/', 'refresh');
 		}else{
-			/*$login=$this->input->cookie('login');
-			$person=$this->Person->get_by_login($login);
-			if($person){
-				$data['fio']=$person[0]->surname.' '.$person[0]->name.' '.$person[0]->secondname;
-				$data['id']=$person[0]->id;
-				$this->load->view('main_view',$data);
-			}else echo "DataBase of Persons is empty";*/
 			$data['site_name']=$this->lang->line("text_site_name");
 			$data['title']=$this->lang->line("text_my_page");
 			$data['text_persons']=$this->lang->line("text_persons");
@@ -42,19 +35,22 @@ class Main extends CI_Controller {
 			$data['text_exit']=$this->lang->line("text_exit");
 			$data['text_messages']=$this->lang->line("text_messages");
 			$data['text_settings']=$this->lang->line("text_settings");
-			$data['content']=$this->load->view('person_page_view',$data);
+			$data['content']=$this->load->view('person_page_view',$data,true);
 			$this->load->view('main_view',$data);
 		}
 	}
 	public function author($error="")
 	{
+		$data['text_select_language']=$this->lang->line("text_select_language");
+		$data['title']=$this->lang->line("text_autorisation");
 		$data['site_name']=$this->lang->line("text_site_name");
 		$data['autorisation']=$this->lang->line("text_autorisation");
 		$data['login']=$this->lang->line("text_login");
 		$data['key']=$this->lang->line("text_key");
 		$data['log_in']=$this->lang->line("text_log_in");
 		$data['error']=$error;
-		$this->load->view('author_view',$data);
+		$data['content']=$this->load->view('author_view',$data,true);
+		$this->load->view('main_view',$data);
 	}
 	public function author_action()
 	{
@@ -110,6 +106,11 @@ class Main extends CI_Controller {
 	public function del_cookie()
 	{
 		delete_cookie('login');
+		redirect('/main/author/', 'refresh');
+	}
+	public function change_lang($lang)
+	{
+		$this->input->set_cookie('lang',$lang,2595000);
 		redirect('/main/author/', 'refresh');
 	}
 
