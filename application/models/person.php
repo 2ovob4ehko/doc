@@ -45,7 +45,7 @@ class Person extends CI_Model {
 		if(!empty($login)) {
 			$this->db->where('login', $login);
 			$query = $this->db->get('person');
-			return $query->result();
+			return $query->result()[0];
 		} else return false;
 	}
 }

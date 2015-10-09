@@ -25,30 +25,25 @@ class Main extends CI_Controller {
 		if(!$this->input->cookie('login')){
 			redirect('/main/author/', 'refresh');
 		}else{
-			$data['site_name']=$this->lang->line("text_site_name");
+			$p=$this->Person->get_by_login($this->input->cookie('login'));
 			$data['title']=$this->lang->line("text_my_page");
-			$data['text_persons']=$this->lang->line("text_persons");
-			$data['text_firms']=$this->lang->line("text_firms");
-			$data['text_my_page']=$this->lang->line("text_my_page");
-			$data['text_chosen_persons']=$this->lang->line("text_chosen_persons");
-			$data['text_chosen_firms']=$this->lang->line("text_chosen_firms");
-			$data['text_exit']=$this->lang->line("text_exit");
-			$data['text_messages']=$this->lang->line("text_messages");
-			$data['text_settings']=$this->lang->line("text_settings");
+			foreach ($this->lang->language as $key => $value){
+				$data[$key]=$value;
+			}
+			foreach ($p as $key => $value){
+				$data[$key]=$value;
+			}
 			$data['content']=$this->load->view('person_page_view',$data,true);
 			$this->load->view('main_view',$data);
 		}
 	}
 	public function author($error="")
 	{
-		$data['text_select_language']=$this->lang->line("text_select_language");
 		$data['title']=$this->lang->line("text_autorisation");
-		$data['site_name']=$this->lang->line("text_site_name");
-		$data['autorisation']=$this->lang->line("text_autorisation");
-		$data['login']=$this->lang->line("text_login");
-		$data['key']=$this->lang->line("text_key");
-		$data['log_in']=$this->lang->line("text_log_in");
 		$data['error']=$error;
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
 		$data['content']=$this->load->view('author_view',$data,true);
 		$this->load->view('main_view',$data);
 	}

@@ -149,6 +149,7 @@ body
 		border-left:1px solid rgba(191, 83, 44, 0.3);
 		padding:10px;
 	}
+
 /***Кінець основної сторінки***/
 /****Сторінка інформації*****/
 #data table
@@ -161,10 +162,9 @@ body
 	}
 #photo
 	{
-		width:150px;
-		height:200px;
-		border:1px solid black;
-		margin:0 10px 10px 0;
+		width:120px;
+		border:1px solid #BF532C;
+		margin:0 5px 5px 0;
 	}
 .data_container
 	{
@@ -197,6 +197,15 @@ body
 .data_text
 	{
 		color:#BF532C;
+	}
+.data_container a
+	{
+		text-decoration: blink;
+		color:#BF532C;
+	}
+.data_container a:hover
+	{
+		text-decoration:underline;
 	}
 /*****Кінець сторінки інформації*****/
 

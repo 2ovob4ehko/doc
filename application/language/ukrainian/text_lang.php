@@ -15,6 +15,14 @@ $lang['text_chosen_firms']="Вибрані підприємства";
 $lang['text_messages']="Повідомлення";
 $lang['text_settings']="Налаштування";
 $lang['text_select_language']="Мова";
+$lang['text_own_data']="Особисті дані";
+$lang['text_f_name']="Ім’я";
+$lang['text_s_name']="По-батькові";
+$lang['text_surname']="Прізвище";
+$lang['text_born']="Дата народження";
+$lang['text_sex']="Стать";
+$lang['text_blood']="Група крові";
+$lang['text_parents']="Батьки";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
