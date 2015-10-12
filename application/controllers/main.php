@@ -4,6 +4,7 @@ class Main extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('Person');
+		$this->load->model('Perent');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -33,6 +34,7 @@ class Main extends CI_Controller {
 			foreach ($p as $key => $value){
 				$data[$key]=$value;
 			}
+			$data['perent']=$this->Perent->get_by_person($p->id);
 			$data['content']=$this->load->view('person_page_view',$data,true);
 			$this->load->view('main_view',$data);
 		}
