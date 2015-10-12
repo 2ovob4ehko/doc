@@ -23,6 +23,9 @@ $lang['text_born']="Дата народження";
 $lang['text_sex']="Стать";
 $lang['text_blood']="Група крові";
 $lang['text_parents']="Батьки";
+$lang['text_medic_data']="Медичні дані";
+$lang['text_height']="Зріст";
+$lang['text_weight']="Вага";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

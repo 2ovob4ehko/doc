@@ -43,8 +43,12 @@ class Person extends CI_Model {
 	}
 	function get_by_login($login) {
 		if(!empty($login)) {
+			$this->db->select('person.*,blood.name as `blood_name`,sex.name as `sex_name`');
+			$this->db->from('person');
+			$this->db->join('blood', 'blood.id = person.blood');
+			$this->db->join('sex', 'sex.id = person.sex');
 			$this->db->where('login', $login);
-			$query = $this->db->get('person');
+			$query = $this->db->get();
 			return $query->result()[0];
 		} else return false;
 	}
