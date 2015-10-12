@@ -54,11 +54,11 @@
 					</tr>
 					<tr>
 						<td class="data_name"><?=$text_height?>:</td>
-						<td class="data_text"><?=$height?></td>
+						<td class="data_text">178</td>
 					</tr>
 					<tr>
 						<td class="data_name"><?=$text_weight?>:</td>
-						<td class="data_text"><?=$weight?></td>
+						<td class="data_text">65</td>
 					</tr>
 				</table>
 			</div>
