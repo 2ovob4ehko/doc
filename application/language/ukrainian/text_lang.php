@@ -26,6 +26,8 @@ $lang['text_parents']="Батьки";
 $lang['text_medic_data']="Медичні дані";
 $lang['text_height']="Зріст";
 $lang['text_weight']="Вага";
+$lang['text_male']="чоловіча";
+$lang['text_female']="жіноча";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

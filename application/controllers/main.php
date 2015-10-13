@@ -5,6 +5,7 @@ class Main extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('Person');
 		$this->load->model('Perent');
+		$this->load->model('Medic');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -35,6 +36,7 @@ class Main extends CI_Controller {
 				$data[$key]=$value;
 			}
 			$data['perent']=$this->Perent->get_by_person($p->id);
+			$data['medic']=$this->Medic->get_last_by_person($p->id);
 			$data['content']=$this->load->view('person_page_view',$data,true);
 			$this->load->view('main_view',$data);
 		}
@@ -57,7 +59,7 @@ class Main extends CI_Controller {
 			redirect('/main/author/'.urlencode($this->lang->line("text_error_login")), 'refresh');
 		}else{
 			$enc_str=$this->text_enc($_POST['login'],$_FILES['key']['tmp_name']);
-			$dec_str=$this->text_dec($enc_str,$pers[0]->pub_key);
+			$dec_str=$this->text_dec($enc_str,$pers->pub_key);
 			if($_POST['login']==$dec_str){
 				$this->input->set_cookie('login',$_POST['login'],0);
 				redirect('/', 'refresh');

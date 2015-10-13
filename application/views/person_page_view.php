@@ -27,7 +27,7 @@
 					</tr>
 					<tr>
 						<td class="data_name"><?=$text_sex?>:</td>
-						<td class="data_text"><?=$sex_name?></td>
+						<td class="data_text"><?=${'text_'.$sex_name}?></td>
 					</tr>
 				</table>
 				<table>
@@ -52,14 +52,12 @@
 						<td class="data_name"><?=$text_blood?>:</td>
 						<td class="data_text"><?=$blood_name?></td>
 					</tr>
+					<? foreach ($medic as $item):?>
 					<tr>
-						<td class="data_name"><?=$text_height?>:</td>
-						<td class="data_text">178</td>
+						<td class="data_name"><?=${'text_'.$item->name}?>:</td>
+						<td class="data_text"><?=$item->value?> (<?=$item->exam_date?>)</td>
 					</tr>
-					<tr>
-						<td class="data_name"><?=$text_weight?>:</td>
-						<td class="data_text">65</td>
-					</tr>
+					<? endforeach;?>
 				</table>
 			</div>
 		</td>
