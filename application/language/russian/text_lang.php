@@ -15,6 +15,20 @@ $lang['text_chosen_firms']="Избранные предприятия";
 $lang['text_messages']="Сообщения";
 $lang['text_settings']="Настройки";
 $lang['text_select_language']="Язык";
+$lang['text_own_data']="Личные данные";
+$lang['text_f_name']="Имя";
+$lang['text_s_name']="Отчество";
+$lang['text_surname']="Фамилия";
+$lang['text_born']="Дата рождения";
+$lang['text_sex']="Пол";
+$lang['text_blood']="Группа крови";
+$lang['text_parents']="Родители";
+$lang['text_medic_data']="Медицинские данные";
+$lang['text_height']="Рост";
+$lang['text_weight']="Вес";
+$lang['text_male']="мужская";
+$lang['text_female']="женская";
+$lang['text_more']="Дополнительно";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

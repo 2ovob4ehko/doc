@@ -28,6 +28,7 @@ $lang['text_height']="Зріст";
 $lang['text_weight']="Вага";
 $lang['text_male']="чоловіча";
 $lang['text_female']="жіноча";
+$lang['text_more']="Додатково";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

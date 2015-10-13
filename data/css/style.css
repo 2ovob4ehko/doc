@@ -198,6 +198,16 @@ body
 	{
 		color:#BF532C;
 	}
+.data_more
+	{
+		text-align:center;
+		color:#777;
+	}
+.data_more:hover
+	{
+		background:rgba(191, 83, 44, 0.1);
+		cursor:pointer;
+	}
 .data_container a
 	{
 		text-decoration: blink;

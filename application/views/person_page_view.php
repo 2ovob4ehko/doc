@@ -55,9 +55,12 @@
 					<? foreach ($medic as $item):?>
 					<tr>
 						<td class="data_name"><?=${'text_'.$item->name}?>:</td>
-						<td class="data_text"><?=$item->value?> (<?=$item->exam_date?>)</td>
+						<td class="data_text"><?=$item->value?> (<?=Date("d.m.Y", strtotime($item->exam_date))?>)</td>
 					</tr>
 					<? endforeach;?>
+					<tr>
+						<td  colspan="2" class="data_more"><?=$text_more?></td>
+					</tr>
 				</table>
 			</div>
 		</td>
