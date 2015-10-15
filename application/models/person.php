@@ -31,7 +31,7 @@ class Person extends CI_Model {
 		if(!empty($id)) {
 			$this->db->where('id', $id);
 			$query = $this->db->get('person');
-			return $query->result();
+			return $query->result()[0];
 		} else return false;
 	}
 	function get_by_born($born) {

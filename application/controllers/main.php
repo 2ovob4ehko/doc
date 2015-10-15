@@ -24,10 +24,10 @@ class Main extends CI_Controller {
 	}
 	public function index()
 	{
-		if(!$this->input->cookie('login')){
+		if(!$this->input->cookie('id')){
 			redirect('/main/author/', 'refresh');
 		}else{
-			$p=$this->Person->get_by_login($this->input->cookie('login'));
+			$p=$this->Person->get_by_id($this->input->cookie('id'));
 			$data['title']=$this->lang->line("text_my_page");
 			foreach ($this->lang->language as $key => $value){
 				$data[$key]=$value;
@@ -61,7 +61,7 @@ class Main extends CI_Controller {
 			$enc_str=$this->text_enc($_POST['login'],$_FILES['key']['tmp_name']);
 			$dec_str=$this->text_dec($enc_str,$pers->pub_key);
 			if($_POST['login']==$dec_str){
-				$this->input->set_cookie('login',$_POST['login'],0);
+				$this->input->set_cookie('id',$pers->id,0);
 				redirect('/', 'refresh');
 			}else{
 				redirect('/main/author/'.urlencode($this->lang->line("text_error_key")), 'refresh');
@@ -102,6 +102,21 @@ class Main extends CI_Controller {
 			redirect('/main/regist/'.urlencode('Такий логін вже зайнятий'), 'refresh');
 		}
 	}*/
+	public function work_list()
+	{
+		$p=$this->Person->get_by_id($this->input->cookie('id'));
+		$data['title']=$this->lang->line("text_my_page");
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		foreach ($p as $key => $value){
+			$data[$key]=$value;
+		}
+		$data['perent']=$this->Perent->get_by_person($p->id);
+		$data['medic']=$this->Medic->get_last_by_person($p->id);
+		$data['content']=$this->load->view('person_page_view',$data,true);
+		$this->load->view('main_view',$data);
+	}
 	public function del_cookie()
 	{
 		delete_cookie('login');
