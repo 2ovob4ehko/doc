@@ -30,7 +30,7 @@
 			</div>
 			<div id="left_menu">
 				<? if($title!=$text_autorisation):?>
-					<div><?=$text_my_page?></div>
+					<div onclick="location.href='/';"><?=$text_my_page?></div>
 					<div onclick="location.href='/main/work_list';"><?=$text_my_work?></div>
 					<div><?=$text_chosen_persons?></div>
 					<div><?=$text_chosen_firms?></div>

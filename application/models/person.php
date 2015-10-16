@@ -29,8 +29,12 @@ class Person extends CI_Model {
 	}
 	function get_by_id($id) {
 		if(!empty($id)) {
-			$this->db->where('id', $id);
-			$query = $this->db->get('person');
+			$this->db->select('person.*,blood.name as `blood_name`,sex.name as `sex_name`');
+			$this->db->from('person');
+			$this->db->join('blood', 'blood.id = person.blood');
+			$this->db->join('sex', 'sex.id = person.sex');
+			$this->db->where('person.id', $id);
+			$query = $this->db->get();
 			return $query->result()[0];
 		} else return false;
 	}

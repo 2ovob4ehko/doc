@@ -6,6 +6,7 @@ class Main extends CI_Controller {
 		$this->load->model('Person');
 		$this->load->model('Perent');
 		$this->load->model('Medic');
+		$this->load->model('Workfor');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -104,17 +105,12 @@ class Main extends CI_Controller {
 	}*/
 	public function work_list()
 	{
-		$p=$this->Person->get_by_id($this->input->cookie('id'));
-		$data['title']=$this->lang->line("text_my_page");
+		$data['title']=$this->lang->line("text_my_work");
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		foreach ($p as $key => $value){
-			$data[$key]=$value;
-		}
-		$data['perent']=$this->Perent->get_by_person($p->id);
-		$data['medic']=$this->Medic->get_last_by_person($p->id);
-		$data['content']=$this->load->view('person_page_view',$data,true);
+		$data['work']=$this->Workfor->get_by_person($this->input->cookie('id'));
+		$data['content']=$this->load->view('work_list_view',$data,true);
 		$this->load->view('main_view',$data);
 	}
 	public function del_cookie()

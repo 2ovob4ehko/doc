@@ -218,6 +218,31 @@ body
 		text-decoration:underline;
 	}
 /*****Кінець сторінки інформації*****/
+/*******Початок сторінки табличного списку*********/
+#table_list
+	{
+		border:1px solid rgba(191, 83, 44, 0.3);
+		border-spacing:0;
+    border-collapse:collapse;
+	}
+#table_list td
+	{
+		border:1px solid rgba(191, 83, 44, 0.3);
+		padding:5px 10px;
+	}
+#table_title
+	{
+		font-size:13px;
+		color:#777;
+		text-align:center;
+	}
+.table_data
+	{
+		font-size:13px;
+		color:#BF532C;
+		text-align:left;
+	}
+/*******Кінець сторінки табличного списку*********/
 
 #dialogform
 	{

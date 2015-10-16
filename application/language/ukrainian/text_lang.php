@@ -30,6 +30,10 @@ $lang['text_male']="чоловіча";
 $lang['text_female']="жіноча";
 $lang['text_more']="Додатково";
 $lang['text_my_work']="Моя робота";
+$lang['text_work_place']="Місце роботи";
+$lang['text_job_title']="Посада";
+$lang['text_from_date']="З дати";
+$lang['text_to_date']="По дату";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
