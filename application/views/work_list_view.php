@@ -6,7 +6,7 @@
 		<td><?=$text_to_date?></td>
 	</tr>
 	<? foreach ($work as $item):?>
-	<tr class="table_data">
+	<tr class="table_data <?=$item->stop!=null ? 'old' : ''?>">
 		<td><?=$item->firm?></td>
 		<td><?=$item->job_title?></td>
 		<td><?=Date("d.m.Y", strtotime($item->start))?></td>
