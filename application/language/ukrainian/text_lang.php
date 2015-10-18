@@ -34,6 +34,9 @@ $lang['text_work_place']="Місце роботи";
 $lang['text_job_title']="Посада";
 $lang['text_from_date']="З дати";
 $lang['text_to_date']="По дату";
+$lang['text_maternity_hospital']="Пологовий будинок";
+$lang['text_submit']="Відправити";
+$lang['text_lang']="uk";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

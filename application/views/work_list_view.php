@@ -6,7 +6,7 @@
 		<td><?=$text_to_date?></td>
 	</tr>
 	<? foreach ($work as $item):?>
-	<tr class="table_data <?=$item->stop!=null ? 'old' : ''?>">
+	<tr class="table_data<?=$item->stop!=null ? ' old"' : ' click" onclick="location.href=\'/main/work_system/'.$item->firm_id.'\'"'?>>
 		<td><?=$item->firm?></td>
 		<td><?=$item->job_title?></td>
 		<td><?=Date("d.m.Y", strtotime($item->start))?></td>

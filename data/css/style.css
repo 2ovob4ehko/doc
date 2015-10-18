@@ -242,6 +242,10 @@ body
 		color:#BF532C;
 		text-align:left;
 	}
+.click:hover
+	{
+		cursor:pointer;
+	}
 .old
 	{
 		color:#777;

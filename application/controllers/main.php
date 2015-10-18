@@ -7,6 +7,7 @@ class Main extends CI_Controller {
 		$this->load->model('Perent');
 		$this->load->model('Medic');
 		$this->load->model('Workfor');
+		$this->load->model('Worksyslink');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -111,6 +112,17 @@ class Main extends CI_Controller {
 		}
 		$data['work']=$this->Workfor->get_by_person($this->input->cookie('id'));
 		$data['content']=$this->load->view('work_list_view',$data,true);
+		$this->load->view('main_view',$data);
+	}
+	public function work_system($firm)
+	{
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
+		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
+		$data['title']=$this->lang->line("text_".$system->system);
+		$data['content']=$this->load->view($system->system.'_view',$data,true);
 		$this->load->view('main_view',$data);
 	}
 	public function del_cookie()

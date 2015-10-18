@@ -3,9 +3,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><?=$text_site_name?> | <?=$title?></title>
 		<link rel="stylesheet" href="<?=base_url()?>data/css/style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="<?=base_url()?>data/css/jquery.datetimepicker.css" type="text/css" media="all" />
 		<link rel="icon" href="<?=base_url()?>data/css/favicon.png" type="image/x-icon"/>
 		<script src="<?=base_url()?>data/js/jquery.js" type="text/javascript"></script>
 		<script src="<?=base_url()?>data/js/action.js" type="text/javascript"></script>
+		<script src="<?=base_url()?>data/js/jquery.datetimepicker.full.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div id="page">
