@@ -37,6 +37,8 @@ $lang['text_to_date']="По дату";
 $lang['text_maternity_hospital']="Пологовий будинок";
 $lang['text_submit']="Відправити";
 $lang['text_lang']="uk";
+$lang['text_cm']="см.";
+$lang['text_kg']="кг.";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

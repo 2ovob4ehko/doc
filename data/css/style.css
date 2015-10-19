@@ -250,6 +250,17 @@ body
 	{
 		color:#777;
 	}
+#form
+	{
+		width:300px;
+		margin:auto;
+		text-align:center;
+		color:#777;
+	}
+#form .el
+	{
+		margin:5px 0px;
+	}
 /*******Кінець сторінки табличного списку*********/
 
 #dialogform

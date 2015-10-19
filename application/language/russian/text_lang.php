@@ -29,6 +29,14 @@ $lang['text_weight']="Вес";
 $lang['text_male']="мужская";
 $lang['text_female']="женская";
 $lang['text_more']="Дополнительно";
+$lang['text_my_work']="Моя работа";
+$lang['text_work_place']="Место работы";
+$lang['text_job_title']="Должность";
+$lang['text_from_date']="С даты";
+$lang['text_to_date']="По дату";
+$lang['text_maternity_hospital']="Роддом";
+$lang['text_submit']="Отправить";
+$lang['text_lang']="ru";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

@@ -8,6 +8,8 @@ class Main extends CI_Controller {
 		$this->load->model('Medic');
 		$this->load->model('Workfor');
 		$this->load->model('Worksyslink');
+		$this->load->model('Sex');
+		$this->load->model('Blood');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -119,6 +121,9 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
+		$data['sex']=$this->Sex->get_all();
+		$data['blood']=$this->Blood->get_all();
+		$data['person']=$this->Person->get_all();
 		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		$data['title']=$this->lang->line("text_".$system->system);
