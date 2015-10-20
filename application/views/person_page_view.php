@@ -17,7 +17,7 @@
 					</tr>
 					<tr>
 						<td class="data_name"><?=$text_surname?>:</td>
-						<td class="data_text"><?=$surname?></td>
+						<td class="data_text"><?=$surname?><?=$priv_surname=='' ? '' : ' ('.$priv_surname.')'?></td>
 					</tr>
 				</table>
 				<table>

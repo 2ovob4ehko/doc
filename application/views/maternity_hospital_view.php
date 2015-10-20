@@ -21,8 +21,8 @@
 			<input class="el" type="text" name="height" placeholder="<?=$text_height?>" maxlength="256" size="15"><?=$text_cm?><br>
 			<input class="el" type="text" name="weight" placeholder="<?=$text_weight?>" maxlength="256" size="15"><?=$text_kg?><br>
 			<select class="el" id="perentpicker" name="perents" multiple>
-				<? foreach ($sex as $item):?>
-				<option value="1" class="option_one" data-subtitle="maksym.holovchenko.1990" data-left="<img src='/data/photo/IMG_1303.JPG'>">Максим Миколайович Головченко</option>
+				<? foreach ($person as $item):?>
+				<option value="<?=$item->id?>" data-subtitle="<?=$item->login?>" data-left="<img src='/data/photo/<?=$item->photo=='' ? 'imgres.jpg' : $item->photo?>'>"><?=$item->f_name?> <?=$item->s_name?> <?=$item->surname?><?=$item->priv_surname=='' ? '' : ' ('.$item->priv_surname.')'?></option>
 				<? endforeach;?>
 			</select><br>
 			<input class="el" type="submit" value="<?=$text_submit?>">
@@ -36,34 +36,39 @@
 		</script>
 	</div>
 	<div>
-		<div>
-			<table style="font-size:13px;">
+		<? foreach ($client as $item):?>
+		<div class="post_element">
+			<table>
 				<tr>
-					<td rowspan="7"><div style="border:1px solid black;width:50px;height:66px;"></div></td>
-					<td colspan="2">Максим Миколайович Головченко</td>
+					<td rowspan="7"><img src="/data/photo/<?=$item->photo=='' ? 'imgres.jpg' : $item->photo?>"></td>
+					<td colspan="2" class="post_title"><?=$item->f_name?> <?=$item->s_name?> <?=$item->surname?><?=$item->priv_surname=='' ? '' : ' ('.$item->priv_surname.')'?></td>
 				</tr>
-				<tr><td>Група крові:</td><td>0(I) Rh(+)</td></tr>
-				<tr><td>Стать:</td><td>чоловіча</td></tr>
-				<tr><td>Дата народження:</td><td>02.10.1990</td></tr>
-				<tr><td>Зріст:</td><td>50 см.</td></tr>
-				<tr><td>Вага:</td><td>5 кг.</td></tr>
-				<tr><td>Батьки:</td><td>Ірина Валентинівна Головченко (Чернешенко),<br> Микола Іванович Головченко</td></tr>
+				<tr>
+					<td class="data_name"><?=$text_blood?>:</td>
+					<td class="data_text"><?=$item->blood_name?></td>
+				</tr>
+				<tr>
+					<td class="data_name"><?=$text_sex?>:</td>
+					<td class="data_text"><?=${'text_'.$item->sex_name}?></td>
+				</tr>
+				<tr>
+					<td class="data_name"><?=$text_born?>:</td>
+					<td class="data_text"><?=Date("d.m.Y", strtotime($item->born))?></td>
+				</tr>
+				<tr>
+					<td class="data_name"><?=$text_height?>:</td>
+					<td class="data_text">50 см.</td>
+				</tr>
+				<tr>
+					<td class="data_name"><?=$text_weight?>:</td>
+					<td class="data_text">5 кг.</td>
+				</tr>
+				<tr>
+					<td class="data_name"><?=$text_parents?>:</td>
+					<td class="data_text">Ірина Валентинівна Головченко (Чернешенко),<br> Микола Іванович Головченко</td>
+				</tr>
 			</table>
 		</div>
-		<div>
-			<table style="font-size:13px;">
-				<tr>
-					<td rowspan="7"><div style="border:1px solid black;width:50px;height:66px;"></div></td>
-					<td colspan="2">Максим Миколайович Головченко</td>
-				</tr>
-				<tr><td>Група крові:</td><td>0(I) Rh(+)</td></tr>
-				<tr><td>Стать:</td><td>чоловіча</td></tr>
-				<tr><td>Дата народження:</td><td>02.10.1990</td></tr>
-				<tr><td>Зріст:</td><td>50 см.</td></tr>
-				<tr><td>Вага:</td><td>5 кг.</td></tr>
-				<tr><td>Батьки:</td><td>Ірина Валентинівна Головченко (Чернешенко),<br> Микола Іванович Головченко</td></tr>
-			</table>
-		</div>
-
+		<? endforeach;?>
 	</div>
 </div>

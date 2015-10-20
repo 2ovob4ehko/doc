@@ -262,6 +262,28 @@ body
 		margin:5px 0px;
 	}
 /*******Кінець сторінки табличного списку*********/
+/***Елемент посту***/
+.post_element
+	{
+		width:100%;
+		border:1px solid rgba(191, 83, 44, 0.3);
+		border-radius:5px;
+		margin:10px 0;
+	}
+.post_element .post_title
+	{
+		font-weight:bold;
+		color:#BF532C;
+	}
+.post_element table
+	{
+		font-size:13px;
+	}
+.post_element img
+	{
+		width:50px;
+	}
+/******Кінець елементу посту******/
 
 #dialogform
 	{
