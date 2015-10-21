@@ -1,7 +1,7 @@
 <div>
 	<div id="form">
 		<form action="/main/registr_action" method="post">
-			<input class="el" type="hidden" name="film" value="<?=$this->uri->segment(3,0)?>">
+			<input class="el" type="hidden" name="firm" value="<?=$this->uri->segment(3,0)?>">
 			<input class="el" type="text" name="f_name" placeholder="<?=$text_f_name?>" maxlength="256" size="20"><br>
 			<input class="el" type="text" name="s_name" placeholder="<?=$text_s_name?>" maxlength="256" size="20"><br>
 			<input class="el" type="text" name="surname" placeholder="<?=$text_surname?>" maxlength="256" size="20"><br>

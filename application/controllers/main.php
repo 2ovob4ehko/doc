@@ -23,7 +23,7 @@ class Main extends CI_Controller {
 	        break;
 	    default:
         	$this->lang->load('text','english');
-        break;
+      break;
 		}
 	}
 	public function index()
@@ -63,49 +63,36 @@ class Main extends CI_Controller {
 			redirect('/main/author/'.urlencode($this->lang->line("text_error_login")), 'refresh');
 		}else{
 			$enc_str=$this->text_enc($_POST['login'],$_FILES['key']['tmp_name']);
-			$dec_str=$this->text_dec($enc_str,$pers->pub_key);
+			$dec_str=$this->text_dec($enc_str,$pers[0]->pub_key);
 			if($_POST['login']==$dec_str){
-				$this->input->set_cookie('id',$pers->id,0);
+				$this->input->set_cookie('id',$pers[0]->id,0);
 				redirect('/', 'refresh');
 			}else{
 				redirect('/main/author/'.urlencode($this->lang->line("text_error_key")), 'refresh');
 			}
 		}
 	}
-	/*public function regist($error="")
+	public function registr_action()
 	{
-		$data['error']=$error;
-		$data['sex']=$this->Sex->get_all();
-		$this->load->view('regist_view',$data);
+		$login=strtolower($this->translit($_POST['f_name'].'.'.$_POST['surname'].'.'.Date("Y",strtotime($_POST['born']))));
+		$person=$this->Person->get_like_login($login);
+		if(empty($person)){$login.=1;}else{$login.=count($person)+1;}
+		$data=array(
+			'login'=>$login,
+			'pub_key'=>'',
+			'f_name'=>$_POST['f_name'],
+			's_name'=>$_POST['s_name'],
+			'surname'=>$_POST['surname'],
+			'blood'=>$_POST['blood'],
+			'sex'=>$_POST['sex'],
+			'born'=>$_POST['born'],
+			'register'=>$_POST['firm']
+		);
+		print_r($data);
+		//$this->Person->insert_new($data);
+
+		//redirect('/main/work_system/'.$_POST['firm'], 'refresh');
 	}
-	public function regist_action()
-	{
-		$login=$this->Person->get_by_login($_POST['login']);
-		if(!$login){
-			$col=count($this->Person->get_by_born($_POST['born']))+1;
-			if(empty($_POST['photo'])){$_POST['photo']='';}
-			$data=array(
-				'id'=>_generateIPN($_POST['born'],$col),
-				'login'=>$_POST['login'],
-				'pass'=>$_POST['pass'],
-				'name'=>$_POST['name'],
-				'secondname'=>$_POST['secondname'],
-				'surname'=>$_POST['surname'],
-				'sex'=>$_POST['sex'],
-				'born'=>$_POST['born'],
-				'photo'=>$_FILES['photo']['name']
-			);
-			$this->Person->insert_new($data);
-
-			$path='./data/photo/';
-			$file=$path.basename($_FILES['photo']['name']);
-			move_uploaded_file($_FILES['photo']['tmp_name'], $file);
-
-			redirect('/main/author/', 'refresh');
-		}else{
-			redirect('/main/regist/'.urlencode('Такий логін вже зайнятий'), 'refresh');
-		}
-	}*/
 	public function work_list()
 	{
 		$data['title']=$this->lang->line("text_my_work");
@@ -154,6 +141,13 @@ class Main extends CI_Controller {
 	function text_dec($str,$key) {
 		openssl_public_decrypt($str,$result,$key);
 		return $result;
+	}
+	function translit($textcyr=null,$textlat=null){
+	$cyr=array('а','б','в','г','ґ','д','e','є','ж','з','и','і','ї','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ', 'ю','я','ь','А','Б','В','Г','Ґ','Д','Е','Є','Ж','З','И','І','Ї','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ю','Я','Ь');
+  $lat=array('a','b','v','h','g','d','e','ye','zh','z','y','i','yi','j','k','l','m','n','o','p','r','s','t','u','f','kh','ts','ch','sh','shch','yu','ya','','A','B','V','H','G','D','E','YE','Zh','Z','Y','I','YI','J','K','L','M','N','O','P','R','S','T','U','F','H','TS','CH','SH','SHCH','YU','YA','');
+	if($textcyr) return str_replace($cyr,$lat,$textcyr);
+    else if($textlat) return str_replace($lat,$cyr,$textlat);
+    else return null;
 	}
 }
 ?>
