@@ -89,6 +89,9 @@ class Main extends CI_Controller {
 			'register'=>$_POST['firm']
 		);
 		print_r($data);
+		/*header('Content-Disposition: attachment; filename=qrcode.png');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: '.filesize($filename));*/
 		//$this->Person->insert_new($data);
 
 		//redirect('/main/work_system/'.$_POST['firm'], 'refresh');

@@ -1,6 +1,6 @@
 <div>
 	<div id="form">
-		<form action="/main/registr_action" method="post">
+		<form action="/main/registr_action" method="post" enctype="multipart/form-data">
 			<input class="el" type="hidden" name="firm" value="<?=$this->uri->segment(3,0)?>">
 			<input class="el" type="text" name="f_name" placeholder="<?=$text_f_name?>" maxlength="256" size="20"><br>
 			<input class="el" type="text" name="s_name" placeholder="<?=$text_s_name?>" maxlength="256" size="20"><br>
@@ -33,6 +33,13 @@
 			$(function(){
 				$('#perentpicker').selectator({labels:{search: '<?=$text_parents?>'}});
 			});
+			setInterval(function(){
+				if($("input[name='f_name']").val()==''||$("input[name='s_name']").val()==''||$("input[name='surname']").val()==''||$("select[name='blood']").val()==0||$("select[name='sex']").val()==0||$("input[name='born']").val()==''||$("input[name='weight']").val()==''||$("input[name='height']").val()==''){
+					$("input[type='submit']").attr('disabled','disabled');
+				}else{
+					$("input[type='submit']").removeAttr('disabled');
+				}
+			},500);
 		</script>
 	</div>
 	<div>
