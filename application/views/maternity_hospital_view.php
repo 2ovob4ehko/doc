@@ -1,6 +1,6 @@
 <div>
 	<div id="form">
-		<form action="/main/registr_action" method="post" enctype="multipart/form-data">
+		<form id="regForm" action="/main/registr_action" method="post" enctype="multipart/form-data">
 			<input class="el" type="hidden" name="firm" value="<?=$this->uri->segment(3,0)?>">
 			<input class="el" type="text" name="f_name" placeholder="<?=$text_f_name?>" maxlength="256" size="20"><br>
 			<input class="el" type="text" name="s_name" placeholder="<?=$text_s_name?>" maxlength="256" size="20"><br>
@@ -26,6 +26,7 @@
 				<? endforeach;?>
 			</select><br>
 			<input class="el" type="submit" value="<?=$text_submit?>">
+			<button class="el" onclick="location.href='/main/work_system/<?=$this->uri->segment(3,0)?>';"><?=$text_reset?></button>
 		</form>
 		<script>
 			$.datetimepicker.setLocale('<?=$text_lang?>');

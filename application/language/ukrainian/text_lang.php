@@ -39,6 +39,7 @@ $lang['text_submit']="Відправити";
 $lang['text_lang']="uk";
 $lang['text_cm']="см.";
 $lang['text_kg']="кг.";
+$lang['text_reset']="Скинути";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
