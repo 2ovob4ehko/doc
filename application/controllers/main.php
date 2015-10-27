@@ -122,9 +122,6 @@ class Main extends CI_Controller {
 		$data['sex']=$this->Sex->get_all();
 		$data['blood']=$this->Blood->get_all();
 		$data['person']=$this->Person->get_all();
-		/*Це треба зробити в у вигляді ajax запиту, а не тут*/
-		$data['client']=$this->Person->get_by_register($firm);
-		/***************************************************/
 		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		$data['title']=$this->lang->line("text_".$system->system);

@@ -26,13 +26,19 @@
 				<? endforeach;?>
 			</select><br>
 			<input class="el" type="submit" value="<?=$text_submit?>">
-			<button class="el" onclick="location.href='/main/work_system/<?=$this->uri->segment(3,0)?>';"><?=$text_reset?></button>
+			<input class="el" type="reset" value="<?=$text_reset?>">
 		</form>
 		<script>
 			$.datetimepicker.setLocale('<?=$text_lang?>');
 			$('#datetimepicker').datetimepicker({dayOfWeekStart:1,step:10,format:'Y-m-d H:i:s',});
 			$(function(){
 				$('#perentpicker').selectator({labels:{search: '<?=$text_parents?>'}});
+				showPatient();
+			});
+			$("input[type='reset']").click(function(event){
+				event.preventDefault();
+				$(this).closest('form').get(0).reset();
+				$('#perentpicker').selectator('refresh');
 			});
 			setInterval(function(){
 				if($("input[name='f_name']").val()==''||$("input[name='s_name']").val()==''||$("input[name='surname']").val()==''||$("select[name='blood']").val()==0||$("select[name='sex']").val()==0||$("input[name='born']").val()==''||$("input[name='weight']").val()==''||$("input[name='height']").val()==''){
@@ -41,42 +47,30 @@
 					$("input[type='submit']").removeAttr('disabled');
 				}
 			},500);
+			var page=1;
+			setInterval(function(){
+				showPatient(page);
+				if($("#data").height()-160>$("#data div").height()){
+					page++;
+				}
+			},2000);
+			function showPatient(p){
+				$.ajax({
+					url: "/ajax/patient_list/<?=$this->uri->segment(3,0)?>/3/"+p,
+					cache: false,
+					dataType: 'html',
+					success: function(html){
+						$('#patient_list').html(html);
+					}
+				});
+			}
+			$("#data").scroll(function(){
+				var bufer=2;
+				if(this.offsetHeight+this.scrollTop+bufer>=this.scrollHeight){
+					page++;
+				}
+			});
 		</script>
 	</div>
-	<div>
-		<? foreach ($client as $item):?>
-		<div class="post_element">
-			<table>
-				<tr>
-					<td rowspan="7"><img src="/data/photo/<?=$item->photo=='' ? 'imgres.jpg' : $item->photo?>"></td>
-					<td colspan="2" class="post_title"><?=$item->f_name?> <?=$item->s_name?> <?=$item->surname?><?=$item->priv_surname=='' ? '' : ' ('.$item->priv_surname.')'?></td>
-				</tr>
-				<tr>
-					<td class="data_name"><?=$text_blood?>:</td>
-					<td class="data_text"><?=$item->blood_name?></td>
-				</tr>
-				<tr>
-					<td class="data_name"><?=$text_sex?>:</td>
-					<td class="data_text"><?=${'text_'.$item->sex_name}?></td>
-				</tr>
-				<tr>
-					<td class="data_name"><?=$text_born?>:</td>
-					<td class="data_text"><?=Date("d.m.Y", strtotime($item->born))?></td>
-				</tr>
-				<tr>
-					<td class="data_name"><?=$text_height?>:</td>
-					<td class="data_text">50 см.</td>
-				</tr>
-				<tr>
-					<td class="data_name"><?=$text_weight?>:</td>
-					<td class="data_text">5 кг.</td>
-				</tr>
-				<tr>
-					<td class="data_name"><?=$text_parents?>:</td>
-					<td class="data_text">Ірина Валентинівна Головченко (Чернешенко),<br> Микола Іванович Головченко</td>
-				</tr>
-			</table>
-		</div>
-		<? endforeach;?>
-	</div>
+	<div id="patient_list"></div>
 </div>

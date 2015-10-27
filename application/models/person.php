@@ -63,18 +63,20 @@ class Person extends CI_Model {
 			$this->db->from('person');
 			$this->db->join('blood', 'blood.id = person.blood');
 			$this->db->join('sex', 'sex.id = person.sex');
-			$this->db->like('login',$login,'after'); 
+			$this->db->like('login',$login,'after');
 			$query = $this->db->get();
 			return $query->result();
 		} else return false;
 	}
-	function get_by_register($register) {
+	function get_by_register($register,$n,$page) {
 		if(!empty($register)) {
 			$this->db->select('person.*,blood.name as `blood_name`,sex.name as `sex_name`');
 			$this->db->from('person');
 			$this->db->join('blood', 'blood.id = person.blood');
 			$this->db->join('sex', 'sex.id = person.sex');
 			$this->db->where('person.register', $register);
+			$this->db->order_by("person.id","desc");
+			$this->db->limit($n*$page);
 			$query = $this->db->get();
 			return $query->result();
 		} else return false;
