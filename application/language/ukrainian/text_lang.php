@@ -40,6 +40,19 @@ $lang['text_lang']="uk";
 $lang['text_cm']="см.";
 $lang['text_kg']="кг.";
 $lang['text_reset']="Скинути";
+/***************нерухомість*****************/
+$lang['text_owner']="власник";
+$lang['text_tenant']="орендар";
+$lang['text_cohabitant']="співмешканець";
+$lang['text_construction']="споруда";
+$lang['text_eng_construction']="інженерна споруда";
+$lang['text_building']="будівля";
+$lang['text_resident_building']="житловий будинок";
+$lang['text_individual_house']="індивідуальний житловий будинок";
+$lang['text_apartment']="квартира";
+$lang['text_mansion']="садиба";
+$lang['text_room']="приміщення";
+$lang['text_living_room']="житлове приміщення";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
