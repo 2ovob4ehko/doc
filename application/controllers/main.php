@@ -90,7 +90,42 @@ class Main extends CI_Controller {
 			'born'=>$_POST['born'],
 			'register'=>$_POST['firm']
 		);
-		$this->Person->insert_new($data);
+		$person_id=$this->Person->insert_new($data);
+		$data=array(
+			'login'=>$login,
+			'pub_key'=>$key['public'],
+			'f_name'=>$_POST['f_name'],
+			's_name'=>$_POST['s_name'],
+			'surname'=>$_POST['surname'],
+			'blood'=>$_POST['blood'],
+			'sex'=>$_POST['sex'],
+			'born'=>$_POST['born'],
+			'register'=>$_POST['firm']
+		);
+		$person_id=$this->Person->insert_new($data);
+		$data=array(
+			'person'=>$person_id,
+			'parameter'=>'1',
+			'value'=>$_POST['weight'],
+			'exam_date'=>Date("Y-m-d H:i:s")
+		);
+		$this->Medic->insert_new($data);
+		$data=array(
+			'person'=>$person_id,
+			'parameter'=>'2',
+			'value'=>$_POST['height'],
+			'exam_date'=>Date("Y-m-d H:i:s")
+		);
+		$this->Medic->insert_new($data);
+		if(isset($_POST['perents'])){
+			foreach($_POST['perents'] as $item){
+				$data=array(
+					'person'=>$person_id,
+					'perent'=>$item
+				);
+				$this->Perent->insert_new($data);
+			}
+		}
 		$filename=time();
 		$handle = fopen($filename, "w");
     fwrite($handle,$key['private']);

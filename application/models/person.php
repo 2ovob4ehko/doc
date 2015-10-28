@@ -21,7 +21,7 @@ class Person extends CI_Model {
 	function insert_new($data) {
 		if(!empty($data)) {
 			$this->db->insert('person', $data);
-			return true;
+			return $this->db->insert_id();
 		} else return false;
 	}
 	function get_all() {

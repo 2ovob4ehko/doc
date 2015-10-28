@@ -33,6 +33,10 @@ class Ajax extends CI_Controller {
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		if($system->system=="maternity_hospital"){
 			$data['client']=$this->Person->get_by_register($firm,$n,$page);
+			foreach ($data['client'] as $item){
+				$data['perent'][$item->id]=$this->Perent->get_by_person($item->id);
+				$data['medic'][$item->id]=$this->Medic->get_last_by_person($item->id);
+			}
 			$this->load->view('patient_list_view',$data);
 		}else echo "Access denied";
 	}

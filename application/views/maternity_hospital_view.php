@@ -20,7 +20,7 @@
 			<input class="el" name="born" type="text" value="" id="datetimepicker" placeholder="<?=$text_born?>"><br>
 			<input class="el" type="text" name="height" placeholder="<?=$text_height?>" maxlength="256" size="15"><?=$text_cm?><br>
 			<input class="el" type="text" name="weight" placeholder="<?=$text_weight?>" maxlength="256" size="15"><?=$text_kg?><br>
-			<select class="el" id="perentpicker" name="perents" multiple>
+			<select class="el" id="perentpicker" name="perents[]" multiple>
 				<? foreach ($person as $item):?>
 				<option value="<?=$item->id?>" data-subtitle="<?=$item->login?>" data-left="<img src='/data/photo/<?=$item->photo=='' ? 'imgres.jpg' : $item->photo?>'>"><?=$item->f_name?> <?=$item->s_name?> <?=$item->surname?><?=$item->priv_surname=='' ? '' : ' ('.$item->priv_surname.')'?></option>
 				<? endforeach;?>

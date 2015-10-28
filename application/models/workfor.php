@@ -29,6 +29,7 @@ class Workfor extends CI_Model {
 			$this->db->join('firm', 'firm.id = work_for.firm');
 			$this->db->join('job_title', 'job_title.id = work_for.job_title');
 			$this->db->where('person', $person);
+			$this->db->order_by("work_for.start","desc");
 			$query = $this->db->get();
 			return $query->result();
 		} else return false;

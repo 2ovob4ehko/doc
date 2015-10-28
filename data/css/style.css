@@ -208,12 +208,12 @@ body
 		background:rgba(191, 83, 44, 0.1);
 		cursor:pointer;
 	}
-.data_container a
+.data_container a, .post_element a
 	{
 		text-decoration: blink;
 		color:#BF532C;
 	}
-.data_container a:hover
+.data_container a:hover, .post_element a:hover
 	{
 		text-decoration:underline;
 	}

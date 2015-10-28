@@ -37,6 +37,9 @@ $lang['text_to_date']="To date";
 $lang['text_maternity_hospital']="Maternity hospital";
 $lang['text_submit']="Submit";
 $lang['text_lang']="en";
+$lang['text_cm']="cm.";
+$lang['text_kg']="kg.";
+$lang['text_reset']="Reset";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

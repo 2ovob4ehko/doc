@@ -9,6 +9,12 @@ class Perent extends CI_Model {
     {
         parent:: __construct();
     }
+	function insert_new($data) {
+		if(!empty($data)) {
+			$this->db->insert('perent', $data);
+			return true;
+		} else return false;
+	}
 	function get_by_person($person) {
 		if(!empty($person)) {
 			$this->db->select('person.id,person.f_name,person.s_name,person.surname,person.priv_surname');
