@@ -1,6 +1,11 @@
 <div>
+	<div>
+		<button><?=$text_realty?></button>
+		<button><?=$text_land_plot?></button>
+		<button><?=$text_transport?></button>
+	</div>
 	<div id="form">
-		<form id="regForm" action="/main/registr_action" method="post">
+		<form id="realtyForm" action="/main/realty_action" method="post">
 			<input class="el" type="hidden" name="firm" value="<?=$this->uri->segment(3,0)?>">
 			<input class="el" type="text" name="f_name" placeholder="<?=$text_f_name?>" maxlength="256" size="20"><br>
 			<input class="el" type="text" name="s_name" placeholder="<?=$text_s_name?>" maxlength="256" size="20"><br>
@@ -47,7 +52,7 @@
 					$("input[type='submit']").removeAttr('disabled');
 				}
 			},500);
-			var page=1;
+			/*var page=1;
 			setInterval(function(){
 				showPatient(page);
 				if($("#data").height()-160>$("#data div").height()){
@@ -69,7 +74,7 @@
 				if(this.offsetHeight+this.scrollTop+bufer>=this.scrollHeight){
 					page++;
 				}
-			});
+			});*/
 		</script>
 	</div>
 	<div id="patient_list"></div>

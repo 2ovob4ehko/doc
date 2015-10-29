@@ -53,6 +53,11 @@ $lang['text_apartment']="квартира";
 $lang['text_mansion']="садиба";
 $lang['text_room']="приміщення";
 $lang['text_living_room']="житлове приміщення";
+$lang['text_my_property']="Моє майно";
+$lang['text_property_register']="Опис майна";
+$lang['text_realty']="Нерухомість";
+$lang['text_land_plot']="Земельна ділянка";
+$lang['text_transport']="Транспорт";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
