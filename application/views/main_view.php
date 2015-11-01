@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="<?=base_url()?>data/css/fm.selectator.jquery.css" type="text/css" media="all" />
 		<link rel="icon" href="<?=base_url()?>data/css/favicon.png" type="image/x-icon"/>
 		<script src="<?=base_url()?>data/js/jquery.js" type="text/javascript"></script>
-		<script src="<?=base_url()?>data/js/action.js" type="text/javascript"></script>
 		<script src="<?=base_url()?>data/js/jquery.datetimepicker.full.js" type="text/javascript"></script>
 		<!--https://github.com/FaroeMedia/selectator-->
 		<script src="<?=base_url()?>data/js/fm.selectator.jquery.js" type="text/javascript"></script>

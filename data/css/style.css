@@ -285,6 +285,11 @@ body
 		width:50px;
 	}
 /******Кінець елементу посту******/
+/**Нерухомість**/
+#realtyForm, #landForm, #transportForm
+	{
+		display:none;
+	}
 
 #dialogform
 	{

@@ -58,6 +58,13 @@ $lang['text_property_register']="Опис майна";
 $lang['text_realty']="Нерухомість";
 $lang['text_land_plot']="Земельна ділянка";
 $lang['text_transport']="Транспорт";
+$lang['text_address']="Адреса";
+$lang['text_square']="Площа";
+$lang['text_type']="Тип";
+$lang['text_rooms_quantity']="Кількість кімнат";
+$lang['text_date_create']="Дата створення";
+$lang['text_search']="Пошук";
+$lang['text_owner']="Власник";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
