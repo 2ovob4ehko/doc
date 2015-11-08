@@ -11,6 +11,10 @@ class Main extends CI_Controller {
 		$this->load->model('Worksyslink');
 		$this->load->model('Sex');
 		$this->load->model('Blood');
+		$this->load->model('Realty');
+		$this->load->model('Realtylink');
+		$this->load->model('Realtytype');
+		$this->load->model('Firm');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -72,6 +76,27 @@ class Main extends CI_Controller {
 				redirect('/main/author/'.urlencode($this->lang->line("text_error_key")), 'refresh');
 			}
 		}
+	}
+	public function realty_action()
+	{
+		$data=array(
+			'address'=>$_POST['address'],
+			'square'=>$_POST['square'],
+			'type'=>$_POST['type'],
+			'rooms'=>$_POST['rooms'],
+			'date'=>$_POST['date'],
+			'register'=>$_POST['firm']
+		);
+		$realty_id=$this->Realty->insert_new($data);
+		$data=array(
+			'person'=>$_POST['person'],
+			'realty'=>$realty_id,
+			'property'=>1,
+			'square'=>$_POST['square']
+		);
+		$this->Realtylink->insert_new($data);
+
+		header('Location: /main/work_system/'.$_POST['firm']);
 	}
 	public function registr_action()
 	{
@@ -157,6 +182,8 @@ class Main extends CI_Controller {
 		$data['sex']=$this->Sex->get_all();
 		$data['blood']=$this->Blood->get_all();
 		$data['person']=$this->Person->get_all();
+		$data['firm']=$this->Firm->get_all();
+		$data['realty_type']=$this->Realtytype->get_all();
 		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		$data['title']=$this->lang->line("text_".$system->system);

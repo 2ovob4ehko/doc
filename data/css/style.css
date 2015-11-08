@@ -3,6 +3,7 @@ body
 		background:#F2DBAE; /*#ddeeff*/
 		margin:0;
 		font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
+		font-size:13px;
 	}
 /****Сторінка авторизації****/
 .page_title
@@ -286,7 +287,7 @@ body
 	}
 /******Кінець елементу посту******/
 /**Нерухомість**/
-#realtyForm, #landForm, #transportForm
+.form
 	{
 		display:none;
 	}

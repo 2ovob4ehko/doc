@@ -8,6 +8,7 @@ class Ajax extends CI_Controller {
 		$this->load->model('Medic');
 		$this->load->model('Workfor');
 		$this->load->model('Worksyslink');
+		$this->load->model('Realty');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -38,6 +39,18 @@ class Ajax extends CI_Controller {
 				$data['medic'][$item->id]=$this->Medic->get_last_by_person($item->id);
 			}
 			$this->load->view('patient_list_view',$data);
+		}else echo "Access denied";
+	}
+	public function realty_list($firm,$n,$page)
+	{
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
+		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
+		if($system->system=="property_register"){
+			$data['realty']=$this->Realty->get_by_register($firm,$n,$page);
+			$this->load->view('realty_list_view',$data);
 		}else echo "Access denied";
 	}
 }
