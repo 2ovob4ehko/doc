@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td class="data_name"><?=$text_owner?>:</td>
-				<td class="data_text"><?=$item->person?></td>
+				<td class="data_text"><?=$person[$item->id]?></td>
 			</tr>
 		</table>
 	</div>

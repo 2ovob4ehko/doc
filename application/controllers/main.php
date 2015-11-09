@@ -81,7 +81,7 @@ class Main extends CI_Controller {
 	{
 		$data=array(
 			'address'=>$_POST['address'],
-			'square'=>$_POST['square'],
+			'square'=>str_replace(",",".",$_POST['square']),
 			'type'=>$_POST['type'],
 			'rooms'=>$_POST['rooms'],
 			'date'=>$_POST['date'],
@@ -163,6 +163,16 @@ class Main extends CI_Controller {
     readfile($filename);
 		unlink($filename);
 		//header('Location: /main/work_system/'.$_POST['firm']);
+	}
+	public function property_list()
+	{
+		$data['title']=$this->lang->line("text_my_property");
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		$data['realty']=$this->Realty->get_by_person('p'.$this->input->cookie('id'));
+		$data['content']=$this->load->view('realty_list_view',$data,true);
+		$this->load->view('main_view',$data);
 	}
 	public function work_list()
 	{

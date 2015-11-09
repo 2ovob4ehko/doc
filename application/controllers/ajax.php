@@ -9,6 +9,7 @@ class Ajax extends CI_Controller {
 		$this->load->model('Workfor');
 		$this->load->model('Worksyslink');
 		$this->load->model('Realty');
+		$this->load->model('Firm');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -50,6 +51,15 @@ class Ajax extends CI_Controller {
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		if($system->system=="property_register"){
 			$data['realty']=$this->Realty->get_by_register($firm,$n,$page);
+			foreach ($data['realty'] as $item){
+				$l=str_split($item->person);
+				if($l[0]=='p'){
+					$p=$this->Person->get_by_id(substr($item->person,1));
+					$data['person'][$item->id]=$p->f_name.' '.$p->s_name.' '.$p->surname;
+				}else{
+					$data['person'][$item->id]=$this->Firm->get_by_id(substr($item->person,1))->name;
+				}
+			}
 			$this->load->view('realty_list_view',$data);
 		}else echo "Access denied";
 	}

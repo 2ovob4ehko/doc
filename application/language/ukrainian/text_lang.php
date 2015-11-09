@@ -64,7 +64,7 @@ $lang['text_type']="Тип";
 $lang['text_rooms_quantity']="Кількість кімнат";
 $lang['text_date_create']="Дата створення";
 $lang['text_search']="Пошук";
-$lang['text_owner']="Власник";
+$lang['text_ownership']="Право власності";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

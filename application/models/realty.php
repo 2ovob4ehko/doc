@@ -30,10 +30,25 @@ class Realty extends CI_Model {
 			$this->db->join('realty_type', 'realty_type.id = realty.type');
 			$this->db->join('realty_link', 'realty_link.realty = realty.id');
 			$this->db->where('realty.register', $register);
+			$this->db->where('realty_link.property', 1);
 			$this->db->order_by("realty.id","desc");
 			$this->db->limit($n*$page);
 			$query = $this->db->get();
 			return $query->result();
+		} else return false;
+	}
+	function get_by_person($person) {
+		if(!empty($person)) {
+			$this->db->select('realty.address,realty_type.name as realty_type,realty_link.square,property_type.name as property_type');
+			$this->db->from('realty');
+			$this->db->join('realty_type', 'realty_type.id = realty.type');
+			$this->db->join('realty_link', 'realty_link.realty = realty.id');
+			$this->db->join('property_type', 'property_type.id = realty_link.property');
+			$this->db->where('realty_link.person', $person);
+			$this->db->order_by("realty.id","desc");
+			$this->db->limit($n*$page);
+			$query = $this->db->get();
+			return $query->result()[0];
 		} else return false;
 	}
 }
