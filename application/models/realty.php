@@ -46,9 +46,8 @@ class Realty extends CI_Model {
 			$this->db->join('property_type', 'property_type.id = realty_link.property');
 			$this->db->where('realty_link.person', $person);
 			$this->db->order_by("realty.id","desc");
-			$this->db->limit($n*$page);
 			$query = $this->db->get();
-			return $query->result()[0];
+			return $query->result();
 		} else return false;
 	}
 }

@@ -171,7 +171,7 @@ class Main extends CI_Controller {
 			$data[$key]=$value;
 		}
 		$data['realty']=$this->Realty->get_by_person('p'.$this->input->cookie('id'));
-		$data['content']=$this->load->view('realty_list_view',$data,true);
+		$data['content']=$this->load->view('property_list_view',$data,true);
 		$this->load->view('main_view',$data);
 	}
 	public function work_list()
