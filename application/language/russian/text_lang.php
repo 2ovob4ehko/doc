@@ -55,6 +55,17 @@ $lang['text_room']="помещение";
 $lang['text_living_room']="жилое помещение";
 $lang['text_my_property']="Мое имущество";
 $lang['text_property_register']="Опись имущества";
+$lang['text_realty']="Недвижимость";
+$lang['text_land_plot']="Земельный участок";
+$lang['text_transport']="Транспорт";
+$lang['text_address']="Адрес";
+$lang['text_square']="Площадь";
+$lang['text_type']="Тип";
+$lang['text_rooms_quantity']="Количество комнат";
+$lang['text_date_create']="Дата создания";
+$lang['text_search']="Поиск";
+$lang['text_ownership']="Право собственности";
+$lang['text_sq_m']="м<sup>2</sup>";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
