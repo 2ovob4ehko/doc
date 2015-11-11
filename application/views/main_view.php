@@ -37,9 +37,9 @@
 					<div onclick="location.href='/';"><?=$text_my_page?></div>
 					<div onclick="location.href='/main/work_list';"><?=$text_my_work?></div>
 					<div onclick="location.href='/main/property_list';"><?=$text_my_property?></div>
+					<div onclick="location.href='/main/new_message';"><?=$text_my_messages?></div>
 					<div><?=$text_chosen_persons?></div>
 					<div><?=$text_chosen_firms?></div>
-					<div><?=$text_messages?></div>
 					<div><?=$text_settings?></div>
 				<? endif; ?>
 			</div>

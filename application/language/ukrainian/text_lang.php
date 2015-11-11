@@ -12,7 +12,7 @@ $lang['text_firms']="Підприємства";
 $lang['text_exit']="Вихід";
 $lang['text_chosen_persons']="Вибрані фіз. особи";
 $lang['text_chosen_firms']="Вибрані підприємства";
-$lang['text_messages']="Повідомлення";
+$lang['text_my_messages']="Мої повідомлення";
 $lang['text_settings']="Налаштування";
 $lang['text_select_language']="Мова";
 $lang['text_own_data']="Особисті дані";
@@ -66,6 +66,10 @@ $lang['text_date_create']="Дата створення";
 $lang['text_search']="Пошук";
 $lang['text_ownership']="Право власності";
 $lang['text_sq_m']="м<sup>2</sup>";
+/*************Повідомлення*******************/
+$lang['text_new_message']="Нове повідомлення";
+$lang['text_message']="Повідомлення";
+$lang['text_recipient']="Одержувач";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

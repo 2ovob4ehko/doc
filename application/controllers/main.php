@@ -164,6 +164,17 @@ class Main extends CI_Controller {
 		unlink($filename);
 		//header('Location: /main/work_system/'.$_POST['firm']);
 	}
+	public function new_message()
+	{
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		$data['person']=$this->Person->get_all();
+		$data['firm']=$this->Firm->get_all();
+		$data['title']=$this->lang->line("text_new_message");
+		$data['content']=$this->load->view('new_message_view',$data,true);
+		$this->load->view('main_view',$data);
+	}
 	public function property_list()
 	{
 		$data['title']=$this->lang->line("text_my_property");
