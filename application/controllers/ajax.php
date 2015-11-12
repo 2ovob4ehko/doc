@@ -10,6 +10,7 @@ class Ajax extends CI_Controller {
 		$this->load->model('Worksyslink');
 		$this->load->model('Realty');
 		$this->load->model('Firm');
+		$this->load->model('Messages');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -62,6 +63,30 @@ class Ajax extends CI_Controller {
 			}
 			$this->load->view('realty_list_view',$data);
 		}else echo "Access denied";
+	}
+	public function message_list($n,$page)
+	{
+		$data['messages']=$this->Messages->get_last_by_person('p'.$this->input->cookie('id'),$n,$page);
+		foreach ($data['messages'] as $item){
+			$l1=str_split($item->person_one);
+			$l2=str_split($item->person_two);
+			if($l1[0]=='f'){
+				$data['name'][$item->id]=$this->Firm->get_by_id(substr($item->person_one,1))->name;
+				$data['logo'][$item->id]=$this->Firm->get_by_id(substr($item->person_one,1))->logo;
+			}else if(substr($item->person_one,1)!=$this->input->cookie('id')){
+				$p=$this->Person->get_by_id(substr($item->person_one,1));
+				$data['name'][$item->id]=$p->priv_surname=='' ? $p->f_name.' '.$p->s_name.' '.$p->surname : $p->f_name.' '.$p->s_name.' '.$p->surname.' ('.$p->priv_surname.')';
+				$data['logo'][$item->id]=$p->photo;
+			}else if($l2[0]=='f'){
+				$data['name'][$item->id]=$this->Firm->get_by_id(substr($item->person_two,1))->name;
+				$data['logo'][$item->id]=$this->Firm->get_by_id(substr($item->person_two,1))->logo;
+			}else{
+				$p=$this->Person->get_by_id(substr($item->person_two,1));
+				$data['name'][$item->id]=$p->priv_surname=='' ? $p->f_name.' '.$p->s_name.' '.$p->surname : $p->f_name.' '.$p->s_name.' '.$p->surname.' ('.$p->priv_surname.')';
+				$data['logo'][$item->id]=$p->photo;
+			}
+		}
+		$this->load->view('messages_list_view',$data);
 	}
 }
 ?>

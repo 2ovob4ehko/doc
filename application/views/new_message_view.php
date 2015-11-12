@@ -29,15 +29,15 @@
 		},500);
 		$(function(){
 			$('#personpicker').selectator({labels:{search: '<?=$text_search?>'}});
-			/*showMessage();*/
+			showMessage(1);
 		});
-			/*function showRealtyList(p){
+			function showMessage(p){
 				$.ajax({
-					url: "/ajax/realty_list/<?=$this->uri->segment(3,0)?>/3/"+p,
+					url: "/ajax/message_list/3/"+p,
 					cache: false,
 					dataType: 'html',
 					success: function(html){
-						$('#realty_list').html(html);
+						$('#message_list').html(html);
 					}
 				});
 			}
@@ -47,21 +47,14 @@
 					page++;
 				}
 			});
-			function showRealtyForm(){
-				$('.form').css('display','none');
-				$('#realtyForm').css('display','block');
-				$('#realty_list').css('display','block');
-				$('#personpicker').selectator({labels:{search: '<?=$text_search?>'}});
-				showRealtyList();
-				page=1;
-				setInterval(function(){
-					showRealtyList(page);
-					if($("#data").height()-160>$("#data div").height()){
-						page++;
-					}
-				},2000);
-			}*/
+			page=1;
+			setInterval(function(){
+				showMessage(page);
+				if($("#data").height()-160>$("#data div").height()){
+					page++;
+				}
+			},2000);
 		</script>
 	</div>
-	<div class="form" id="message_list">Список повідомлень</div>
+	<div id="message_list">Список повідомлень</div>
 </div>

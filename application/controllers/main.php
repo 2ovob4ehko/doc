@@ -15,6 +15,8 @@ class Main extends CI_Controller {
 		$this->load->model('Realtylink');
 		$this->load->model('Realtytype');
 		$this->load->model('Firm');
+		$this->load->model('Messages');
+		$this->load->model('Dialog');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -98,6 +100,26 @@ class Main extends CI_Controller {
 
 		header('Location: /main/work_system/'.$_POST['firm']);
 	}
+	public function message_action()
+	{
+		if(!$this->Dialog->get_if_exist('p'.$this->input->cookie('id'),$_POST['person'])){
+			$data=array(
+				'person_one'=>'p'.$this->input->cookie('id'),
+				'person_two'=>$_POST['person']
+			);
+			$dialog_id=$this->Dialog->insert_new($data);
+		}else{
+			$dialog_id=$this->Dialog->get_by_person('p'.$this->input->cookie('id'))->id;
+		}
+		$data=array(
+			'person'=>'p'.$this->input->cookie('id'),
+			'dialog'=>$dialog_id,
+			'text'=>$_POST['message']
+		);
+		$this->Messages->insert_new($data);
+
+		header('Location: /main/new_message');
+	}
 	public function registr_action()
 	{
 		$login=strtolower($this->translit($_POST['f_name'].'.'.$_POST['surname'].'.'.Date("Y",strtotime($_POST['born']))));
@@ -169,6 +191,18 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
+		$data['person']=$this->Person->get_all();
+		$data['firm']=$this->Firm->get_all();
+		$data['title']=$this->lang->line("text_new_message");
+		$data['content']=$this->load->view('new_message_view',$data,true);
+		$this->load->view('main_view',$data);
+	}
+	public function chat($dialog)
+	{
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		/*if(!$this->Dialog->get_permission($dialog,'p'.$this->input->cookie('id')){*/
 		$data['person']=$this->Person->get_all();
 		$data['firm']=$this->Firm->get_all();
 		$data['title']=$this->lang->line("text_new_message");
