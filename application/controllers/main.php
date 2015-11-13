@@ -35,10 +35,10 @@ class Main extends CI_Controller {
 	}
 	public function index()
 	{
-		if(!$this->input->cookie('id')){
+		/*if(!$this->session->userdata('id')){
 			redirect('/main/author/', 'refresh');
 		}else{
-			$p=$this->Person->get_by_id($this->input->cookie('id'));
+			$p=$this->Person->get_by_id($this->session->userdata('id'));
 			$data['title']=$this->lang->line("text_my_page");
 			foreach ($this->lang->language as $key => $value){
 				$data[$key]=$value;
@@ -50,7 +50,8 @@ class Main extends CI_Controller {
 			$data['medic']=$this->Medic->get_last_by_person($p->id);
 			$data['content']=$this->load->view('person_page_view',$data,true);
 			$this->load->view('main_view',$data);
-		}
+		}*/
+		echo 'hello:'; var_dump($this->session->userdata('id'));
 	}
 	public function author($error="")
 	{
@@ -72,7 +73,7 @@ class Main extends CI_Controller {
 			$enc_str=$this->enc->text_enc($_POST['login'],$_FILES['key']['tmp_name']);
 			$dec_str=$this->enc->text_dec($enc_str,$pers[0]->pub_key);
 			if($_POST['login']==$dec_str){
-				$this->input->set_cookie('id',$pers[0]->id,0);
+				$this->session->set_userdata('id',$pers[0]->id);
 				redirect('/', 'refresh');
 			}else{
 				redirect('/main/author/'.urlencode($this->lang->line("text_error_key")), 'refresh');
@@ -102,17 +103,17 @@ class Main extends CI_Controller {
 	}
 	public function message_action()
 	{
-		if(!$this->Dialog->get_if_exist('p'.$this->input->cookie('id'),$_POST['person'])){
+		if(!$this->Dialog->get_if_exist('p'.$this->session->userdata('id'),$_POST['person'])){
 			$data=array(
-				'person_one'=>'p'.$this->input->cookie('id'),
+				'person_one'=>'p'.$this->session->userdata('id'),
 				'person_two'=>$_POST['person']
 			);
 			$dialog_id=$this->Dialog->insert_new($data);
 		}else{
-			$dialog_id=$this->Dialog->get_by_person('p'.$this->input->cookie('id'))->id;
+			$dialog_id=$this->Dialog->get_by_person('p'.$this->session->userdata('id'))->id;
 		}
 		$data=array(
-			'person'=>'p'.$this->input->cookie('id'),
+			'person'=>'p'.$this->session->userdata('id'),
 			'dialog'=>$dialog_id,
 			'text'=>$_POST['message']
 		);
@@ -202,7 +203,7 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		/*if(!$this->Dialog->get_permission($dialog,'p'.$this->input->cookie('id')){*/
+		/*if(!$this->Dialog->get_permission($dialog,'p'.$this->session->userdata('id')){*/
 		$data['person']=$this->Person->get_all();
 		$data['firm']=$this->Firm->get_all();
 		$data['title']=$this->lang->line("text_new_message");
@@ -215,7 +216,7 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		$data['realty']=$this->Realty->get_by_person('p'.$this->input->cookie('id'));
+		$data['realty']=$this->Realty->get_by_person('p'.$this->session->userdata('id'));
 		$data['content']=$this->load->view('property_list_view',$data,true);
 		$this->load->view('main_view',$data);
 	}
@@ -225,7 +226,7 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		$data['work']=$this->Workfor->get_by_person($this->input->cookie('id'));
+		$data['work']=$this->Workfor->get_by_person($this->session->userdata('id'));
 		$data['content']=$this->load->view('work_list_view',$data,true);
 		$this->load->view('main_view',$data);
 	}
@@ -239,7 +240,7 @@ class Main extends CI_Controller {
 		$data['person']=$this->Person->get_all();
 		$data['firm']=$this->Firm->get_all();
 		$data['realty_type']=$this->Realtytype->get_all();
-		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
+		$job=$this->Workfor->get_by_person_firm($this->session->userdata('id'),$firm);
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		$data['title']=$this->lang->line("text_".$system->system);
 		$data['content']=$this->load->view($system->system.'_view',$data,true);
@@ -247,7 +248,7 @@ class Main extends CI_Controller {
 	}
 	public function del_cookie()
 	{
-		delete_cookie('login');
+		$this->session->unset_userdata('id');
 		redirect('/main/author/', 'refresh');
 	}
 	public function change_lang($lang)

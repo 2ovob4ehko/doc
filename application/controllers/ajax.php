@@ -32,7 +32,7 @@ class Ajax extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
+		$job=$this->Workfor->get_by_person_firm($this->session->userdata('id'),$firm);
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		if($system->system=="maternity_hospital"){
 			$data['client']=$this->Person->get_by_register($firm,$n,$page);
@@ -48,7 +48,7 @@ class Ajax extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		$job=$this->Workfor->get_by_person_firm($this->input->cookie('id'),$firm);
+		$job=$this->Workfor->get_by_person_firm($this->session->userdata('id'),$firm);
 		$system=$this->Worksyslink->get_by_jobfirm($job->job_title,$firm);
 		if($system->system=="property_register"){
 			$data['realty']=$this->Realty->get_by_register($firm,$n,$page);
@@ -66,14 +66,14 @@ class Ajax extends CI_Controller {
 	}
 	public function message_list($n,$page)
 	{
-		$data['messages']=$this->Messages->get_last_by_person('p'.$this->input->cookie('id'),$n,$page);
+		$data['messages']=$this->Messages->get_last_by_person('p'.$this->session->userdata('id'),$n,$page);
 		foreach ($data['messages'] as $item){
 			$l1=str_split($item->person_one);
 			$l2=str_split($item->person_two);
 			if($l1[0]=='f'){
 				$data['name'][$item->id]=$this->Firm->get_by_id(substr($item->person_one,1))->name;
 				$data['logo'][$item->id]=$this->Firm->get_by_id(substr($item->person_one,1))->logo;
-			}else if(substr($item->person_one,1)!=$this->input->cookie('id')){
+			}else if(substr($item->person_one,1)!=$this->session->userdata('id')){
 				$p=$this->Person->get_by_id(substr($item->person_one,1));
 				$data['name'][$item->id]=$p->priv_surname=='' ? $p->f_name.' '.$p->s_name.' '.$p->surname : $p->f_name.' '.$p->s_name.' '.$p->surname.' ('.$p->priv_surname.')';
 				$data['logo'][$item->id]=$p->photo;
