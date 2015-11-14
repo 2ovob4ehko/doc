@@ -11,6 +11,7 @@ class Ajax extends CI_Controller {
 		$this->load->model('Realty');
 		$this->load->model('Firm');
 		$this->load->model('Messages');
+		$this->load->model('Dialog');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -64,10 +65,10 @@ class Ajax extends CI_Controller {
 			$this->load->view('realty_list_view',$data);
 		}else echo "Access denied";
 	}
-	public function message_list($n,$page)
+	public function dialog_list($n,$page)
 	{
-		$data['messages']=$this->Messages->get_last_by_person('p'.$this->session->userdata('id'),$n,$page);
-		foreach ($data['messages'] as $item){
+		$data['dialogs']=$this->Messages->get_last_by_person('p'.$this->session->userdata('id'),$n,$page);
+		foreach ($data['dialogs'] as $item){
 			$l1=str_split($item->person_one);
 			$l2=str_split($item->person_two);
 			if($l1[0]=='f'){
@@ -86,7 +87,26 @@ class Ajax extends CI_Controller {
 				$data['logo'][$item->id]=$p->photo;
 			}
 		}
-		$this->load->view('messages_list_view',$data);
+		$this->load->view('dialog_list_view',$data);
+	}
+	public function chat($dialog)
+	{
+		if($this->Dialog->get_permission($dialog,'p'.$this->session->userdata('id'))){
+			$this->Messages->read_dialog($dialog);
+			$data['messages']=$this->Messages->get_by_dialog($dialog);
+			foreach ($data['messages'] as $item){
+				$l=str_split($item->person);
+				if($l[0]=='p'){
+					$p=$this->Person->get_by_id(substr($item->person,1));
+					$data['name'][$item->id]=$p->priv_surname=='' ? $p->f_name.' '.$p->s_name.' '.$p->surname : $p->f_name.' '.$p->s_name.' '.$p->surname.' ('.$p->priv_surname.')';
+					$data['logo'][$item->id]=$p->photo;
+				}else{
+					$data['name'][$item->id]=$this->Firm->get_by_id(substr($item->person,1))->name;
+					$data['logo'][$item->id]=$this->Firm->get_by_id(substr($item->person,1))->logo;
+				}
+			}
+			$this->load->view('message_list_view',$data);
+		}else echo "Access denied";
 	}
 }
 ?>

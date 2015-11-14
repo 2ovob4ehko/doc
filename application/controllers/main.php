@@ -35,7 +35,7 @@ class Main extends CI_Controller {
 	}
 	public function index()
 	{
-		/*if(!$this->session->userdata('id')){
+		if(!$this->session->userdata('id')){
 			redirect('/main/author/', 'refresh');
 		}else{
 			$p=$this->Person->get_by_id($this->session->userdata('id'));
@@ -50,8 +50,7 @@ class Main extends CI_Controller {
 			$data['medic']=$this->Medic->get_last_by_person($p->id);
 			$data['content']=$this->load->view('person_page_view',$data,true);
 			$this->load->view('main_view',$data);
-		}*/
-		echo 'hello:'; var_dump($this->session->userdata('id'));
+		}
 	}
 	public function author($error="")
 	{
@@ -110,7 +109,7 @@ class Main extends CI_Controller {
 			);
 			$dialog_id=$this->Dialog->insert_new($data);
 		}else{
-			$dialog_id=$this->Dialog->get_by_person('p'.$this->session->userdata('id'))->id;
+			$dialog_id=$this->Dialog->get_by_person('p'.$this->session->userdata('id'),$_POST['person'])->id;
 		}
 		$data=array(
 			'person'=>'p'.$this->session->userdata('id'),
@@ -192,18 +191,6 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		$data['person']=$this->Person->get_all();
-		$data['firm']=$this->Firm->get_all();
-		$data['title']=$this->lang->line("text_new_message");
-		$data['content']=$this->load->view('new_message_view',$data,true);
-		$this->load->view('main_view',$data);
-	}
-	public function chat($dialog)
-	{
-		foreach ($this->lang->language as $key => $value){
-			$data[$key]=$value;
-		}
-		/*if(!$this->Dialog->get_permission($dialog,'p'.$this->session->userdata('id')){*/
 		$data['person']=$this->Person->get_all();
 		$data['firm']=$this->Firm->get_all();
 		$data['title']=$this->lang->line("text_new_message");

@@ -28,5 +28,23 @@ class Messages extends CI_Model {
 			return $query->result();
 		} else return false;
 	}
+	function get_by_dialog($dialog) {
+		if(!empty($dialog)) {
+			$this->db->select('*');
+			$this->db->from('messages');
+			$this->db->where('dialog', $dialog);
+			$this->db->order_by('time', 'desc');
+			$query=$this->db->get();
+			return $query->result();
+		} else return false;
+	}
+	function read_dialog($dialog) {
+		if(!empty($dialog)){
+			$this->db->where('dialog',$dialog);
+			$this->db->where('readed',0);
+			$this->db->update('messages',array('readed'=>1));
+			return true;
+		} else return false;
+	}
 }
 ?>

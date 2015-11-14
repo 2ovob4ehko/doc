@@ -39,14 +39,14 @@ class Dialog extends CI_Model {
 		} else return false;
 	}
 	function get_permission($dialog,$person) {
-		if(!empty($dialog)){
-			$query = $this->db->query('SELECT * FROM dialog WHERE dialog="'.$dialog.'" AND (person_one="'.$person.'" OR person_two="'.$person.'")');
+		if(!empty($dialog)&&!empty($person)){
+			$query = $this->db->query('SELECT * FROM dialog WHERE id="'.$dialog.'" AND (person_one="'.$person.'" OR person_two="'.$person.'")');
 			return count($query->result());
 		} else return false;
 	}
-	function get_by_person($person) {
-		if(!empty($person)){
-			$query = $this->db->query('SELECT * FROM dialog WHERE person_one="'.$person.'" OR person_two="'.$person.'"');
+	function get_by_person($person_one,$person_two) {
+		if(!empty($person_one)&&!empty($person_one)){
+			$query = $this->db->query('SELECT * FROM dialog WHERE (person_one="'.$person_one.'" AND person_two="'.$person_two.'") OR (person_two="'.$person_one.'" AND person_one="'.$person_two.'")');
 			return $query->result()[0];
 		} else return false;
 	}

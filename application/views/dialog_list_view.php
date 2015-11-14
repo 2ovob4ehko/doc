@@ -1,5 +1,15 @@
-<? foreach ($messages as $item):?>
-	<div class="post_element" title="<?=$item->dialog_id?>">
+<? foreach ($dialogs as $item):?>
+<style>
+	.dialog
+	{
+		cursor:pointer;
+	}
+	.dialog:hover, .noread
+	{
+		background:rgba(191, 83, 44, 0.1);
+	}
+</style>
+	<div class="post_element dialog<?=$item->readed==0 ? ' noread' : ''?>" id="<?=$item->dialog_id?>">
 		<table>
 			<tr>
 				<td rowspan="2" style="width:50px;"><img src="/data/photo/<?=$logo[$item->id]=='' ? 'imgres.jpg' : $logo[$item->id]?>"></td>
