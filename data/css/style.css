@@ -291,6 +291,17 @@ body
 	{
 		display:none;
 	}
+.letter:first-letter{text-transform:uppercase;}
+/*Повідомлення*/
+.dialog
+{
+	cursor:pointer;
+}
+.dialog:hover, .noread
+{
+	background:rgba(191, 83, 44, 0.1);
+}
+/**/
 
 #dialogform
 	{

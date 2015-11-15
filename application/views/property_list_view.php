@@ -1,6 +1,3 @@
-<style>
-	.letter:first-letter{text-transform:uppercase;}
-</style>
 <table id="table_list">
 	<tr id="table_title">
 		<td><?=$text_realty?></td>

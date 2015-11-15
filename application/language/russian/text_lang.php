@@ -66,6 +66,10 @@ $lang['text_date_create']="Дата создания";
 $lang['text_search']="Поиск";
 $lang['text_ownership']="Право собственности";
 $lang['text_sq_m']="м<sup>2</sup>";
+/*************Повідомлення*******************/
+$lang['text_new_message']="Новое сообщение";
+$lang['text_message']="Сообщение";
+$lang['text_recipient']="Получатель";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */

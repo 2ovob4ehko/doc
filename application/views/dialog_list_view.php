@@ -1,14 +1,4 @@
 <? foreach ($dialogs as $item):?>
-<style>
-	.dialog
-	{
-		cursor:pointer;
-	}
-	.dialog:hover, .noread
-	{
-		background:rgba(191, 83, 44, 0.1);
-	}
-</style>
 	<div class="post_element dialog<?=$item->readed==0 ? ' noread' : ''?>" id="<?=$item->dialog_id?>">
 		<table>
 			<tr>
