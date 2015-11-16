@@ -301,6 +301,18 @@ body
 {
 	background:rgba(191, 83, 44, 0.1);
 }
+.del
+	{
+		position:absolute;
+		right:15px;
+		margin-top:5px;
+		width:11px;
+		height:11px;
+		background:url(del.png);
+		display:none;
+		cursor:pointer;
+		z-index:99;
+	}
 /**/
 
 #dialogform

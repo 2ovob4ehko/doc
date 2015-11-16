@@ -34,6 +34,15 @@
 				$('#message_list').on('click','.dialog',function(){
 					showChat($(this).attr('id'));
 				});
+				$('#message_list').on('click','.del',function(){
+					console.log($(this).parent().attr('id'));
+				});
+				$('#message_list').on('mouseover','.post_element',function(){
+					$(this).children(".del").css('display','block');
+				});
+				$('#message_list').on('mouseout','.post_element',function(){
+					$(this).children(".del").css('display','none');
+				});
 				$('#message_list').on('click','#back',function(){
 					chat=0;
 					showDialogs(page);

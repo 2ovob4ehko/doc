@@ -1,6 +1,7 @@
 <button id="back">До діалогів</button>
 <? foreach ($messages as $item):?>
-	<div class="post_element">
+	<div class="post_element" id="<?=$item->id?>">
+		<div class="del"></div>
 		<table>
 			<tr>
 				<td rowspan="2" style="width:50px;"><img src="/data/photo/<?=$logo[$item->id]=='' ? 'imgres.jpg' : $logo[$item->id]?>"></td>
