@@ -14,3 +14,15 @@
 		</table>
 	</div>
 <? endforeach;?>
+<script>
+$(function(){
+	$('#message_list').on('click','.del',function(){
+		$.ajax({
+			url: "/ajax/del_message/2/"+$(this).parent().attr('id'),
+			cache: false
+		});
+		chat=0;
+		showDialogs(page);
+	});
+});
+</script>

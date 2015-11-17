@@ -32,10 +32,7 @@
 				$('#personpicker').selectator({labels:{search: '<?=$text_search?>'}});
 				showDialogs(1);
 				$('#message_list').on('click','.dialog',function(){
-					showChat($(this).attr('id'));
-				});
-				$('#message_list').on('click','.del',function(){
-					console.log($(this).parent().attr('id'));
+					showChat($(this).parent().attr('id'));
 				});
 				$('#message_list').on('mouseover','.post_element',function(){
 					$(this).children(".del").css('display','block');

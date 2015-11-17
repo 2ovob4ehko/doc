@@ -46,5 +46,9 @@ class Messages extends CI_Model {
 			return true;
 		} else return false;
 	}
+	function del($id){
+		$this->db->delete('messages',array('id'=>$id));
+		return $this->db->affected_rows();
+	}
 }
 ?>

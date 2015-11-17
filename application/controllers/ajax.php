@@ -108,5 +108,13 @@ class Ajax extends CI_Controller {
 			$this->load->view('message_list_view',$data);
 		}else echo "Access denied";
 	}
+	public function del_message($type,$id)
+	{
+		if($type==1){
+			$this->Dialog->del($id);
+		}else{
+			$this->Messages->del($id);
+		}
+	}
 }
 ?>

@@ -1,7 +1,7 @@
 <? foreach ($dialogs as $item):?>
-	<div class="post_element dialog<?=$item->readed==0 ? ' noread' : ''?>" id="<?=$item->dialog_id?>">
+	<div class="post_element<?=$item->readed==0 ? ' noread' : ''?>" id="<?=$item->dialog_id?>">
 		<div class="del"></div>
-		<table>
+		<table class="dialog">
 			<tr>
 				<td rowspan="2" style="width:50px;"><img src="/data/photo/<?=$logo[$item->id]=='' ? 'imgres.jpg' : $logo[$item->id]?>"></td>
 				<td class="data_text" style="vertical-align:bottom;width:30%;font-weight:bold;"><?=$name[$item->id]?></td>
@@ -13,3 +13,13 @@
 		</table>
 	</div>
 <? endforeach;?>
+<script>
+$(function(){
+	$('#message_list').on('click','.del',function(){
+		$.ajax({
+			url: "/ajax/del_message/1/"+$(this).parent().attr('id'),
+			cache: false
+		});
+	});
+});
+</script>

@@ -50,5 +50,10 @@ class Dialog extends CI_Model {
 			return $query->result()[0];
 		} else return false;
 	}
+	function del($id){
+		$this->db->delete('dialog',array('id'=>$id));
+		$this->db->delete('messages',array('dialog'=>$id));
+		return $this->db->affected_rows();
+	}
 }
 ?>
