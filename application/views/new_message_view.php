@@ -13,8 +13,20 @@
 			<textarea class="el" type="text" name="message" rows="4" cols="35" placeholder="<?=$text_message?>"></textarea><br>
 			<input class="el" type="submit" value="<?=$text_submit?>">
 			<input class="el" type="reset" value="<?=$text_reset?>">
+			<select class="el" id="blank" name="blank" style="width:100px;">
+				<option value="0"><?=$text_add_blank?></option>
+				<option value="1"><?=$text_realty_blank?></option>
+			</select>
 		</form>
+		<div id="message_blank"></div>
 		<script>
+			$("#blank").change(function(){
+				if($("#blank").val()==1){
+					$("#message_blank").html('<h3><?=$text_realty_blank?></h3>');
+				}else{
+					$("#message_blank").html('');
+				}
+			});
 			var chat=0;
 			$("input[type='reset']").click(function(event){
 				event.preventDefault();

@@ -70,6 +70,8 @@ $lang['text_sq_m']="м<sup>2</sup>";
 $lang['text_new_message']="Нове повідомлення";
 $lang['text_message']="Повідомлення";
 $lang['text_recipient']="Одержувач";
+$lang['text_add_blank']="Прикріпити";
+$lang['text_realty_blank']="Запит на зміну стану нерухомого майна";
 
 /* End of file site_lang.php */
 /* Location: ./aplication/language/ukrainian/site_lang.php */
