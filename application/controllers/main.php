@@ -38,7 +38,7 @@ class Main extends CI_Controller {
 		if(!$this->session->userdata('id')){
 			redirect('/main/author/', 'refresh');
 		}else{
-			$p=$this->Person->get_by_id($this->session->userdata('id'));
+		$p=$this->Person->get_by_id($this->session->userdata('id'));
 			$data['title']=$this->lang->line("text_my_page");
 			foreach ($this->lang->language as $key => $value){
 				$data[$key]=$value;
@@ -139,18 +139,6 @@ class Main extends CI_Controller {
 		);
 		$person_id=$this->Person->insert_new($data);
 		$data=array(
-			'login'=>$login,
-			'pub_key'=>$key['public'],
-			'f_name'=>$_POST['f_name'],
-			's_name'=>$_POST['s_name'],
-			'surname'=>$_POST['surname'],
-			'blood'=>$_POST['blood'],
-			'sex'=>$_POST['sex'],
-			'born'=>$_POST['born'],
-			'register'=>$_POST['firm']
-		);
-		$person_id=$this->Person->insert_new($data);
-		$data=array(
 			'person'=>$person_id,
 			'parameter'=>'1',
 			'value'=>$_POST['weight'],
@@ -213,7 +201,7 @@ class Main extends CI_Controller {
 		foreach ($this->lang->language as $key => $value){
 			$data[$key]=$value;
 		}
-		$data['work']=$this->Workfor->get_by_person($this->session->userdata('id'));
+	$data['work']=$this->Workfor->get_by_person($this->session->userdata('id'));
 		$data['content']=$this->load->view('work_list_view',$data,true);
 		$this->load->view('main_view',$data);
 	}
