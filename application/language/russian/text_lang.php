@@ -66,6 +66,7 @@ $lang['text_date_create']="Дата создания";
 $lang['text_search']="Поиск";
 $lang['text_ownership']="Право собственности";
 $lang['text_sq_m']="м<sup>2</sup>";
+$lang['text_property']="Собственность";
 /*************Повідомлення*******************/
 $lang['text_new_message']="Новое сообщение";
 $lang['text_message']="Сообщение";

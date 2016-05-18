@@ -66,6 +66,7 @@ $lang['text_date_create']="Date of built";
 $lang['text_search']="Search";
 $lang['text_ownership']="Ownership";
 $lang['text_sq_m']="m<sup>2</sup>";
+$lang['text_property']="Property";
 /*************Повідомлення*******************/
 $lang['text_new_message']="New message";
 $lang['text_message']="Message";

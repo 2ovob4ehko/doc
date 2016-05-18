@@ -2,7 +2,7 @@
 	<div id="form">
 		<form id="messageForm" action="/main/message_action" method="post">
 			<select class="el" id="personpicker" name="person" style="width:300px;">
-				<option value="0"><?=$text_recipient?><option>
+				<option value="0"><?=$text_recipient?></option>
 				<? foreach ($person as $item):?>
 				<option value="p<?=$item->id?>" data-subtitle="<?=$item->login?>" data-left="<img src='/data/photo/<?=$item->photo=='' ? 'imgres.jpg' : $item->photo?>'>"><?=$item->f_name?> <?=$item->s_name?> <?=$item->surname?><?=$item->priv_surname=='' ? '' : ' ('.$item->priv_surname.')'?></option>
 				<? endforeach;?>
@@ -20,9 +20,15 @@
 		</form>
 		<div id="message_blank"></div>
 		<script>
+			$("#personpicker").change(function(){
+				$("#blank").prop('selectedIndex',0);
+				$("#blank").change();
+			});
 			$("#blank").change(function(){
 				if($("#blank").val()==1){
-					$("#message_blank").html('<h3><?=$text_realty_blank?></h3>');
+					$("#message_blank").html('<h3><?=$text_realty_blank?></h3><div id="blank_text"></div>');
+					//Додати JS-ом view файл форми запиту передачі нерухомого майна
+					$("#blank_text").load('/ajax/blank/1/'+$("#personpicker").val());
 				}else{
 					$("#message_blank").html('');
 				}
@@ -32,12 +38,15 @@
 				event.preventDefault();
 				$(this).closest('form').get(0).reset();
 				$('#personpicker').selectator('refresh');
+				$("#blank").change();
 			});
 			setInterval(function(){
 				if($("textarea[name='message']").val()==''||$("select[name='person']").val()==0){
 					$("input[type='submit']").attr('disabled','disabled');
+					$("#blank").attr('disabled','disabled');
 				}else{
 					$("input[type='submit']").removeAttr('disabled');
+					$("#blank").removeAttr('disabled');
 				}
 			},500);
 			$(function(){

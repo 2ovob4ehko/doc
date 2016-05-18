@@ -12,6 +12,7 @@ class Ajax extends CI_Controller {
 		$this->load->model('Firm');
 		$this->load->model('Messages');
 		$this->load->model('Dialog');
+		$this->load->model('Propertytype');
 		$browser_lang=$this->input->cookie('lang');
 		if(empty($browser_lang)){
 			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -114,6 +115,17 @@ class Ajax extends CI_Controller {
 			$this->Dialog->del($id);
 		}else{
 			$this->Messages->del($id);
+		}
+	}
+	public function blank($n,$person=null)
+	{
+		foreach ($this->lang->language as $key => $value){
+			$data[$key]=$value;
+		}
+		if($n==1){
+			$data['realty']=$this->Realty->get_by_owner($person);
+			$data['property']=$this->Propertytype->get_all();
+			$this->load->view('realty_blank_view',$data);
 		}
 	}
 }
